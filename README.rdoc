@@ -1,0 +1,30 @@
+== README
+
+Goal: A mini redis server that responds to simple commands like Get, Set, DBsize etc.
+
+***Requirements:***
+- server running on port 5555
+- ordered access to data
+- ability to perform operations on data
+- ability for multiple connections to read the same data (??does this mean it needs to be persisted?)
+
+***Assumptions:***
+- data can be stored in memory (does not need to persisted ie. restarting the app will clear the data)
+
+***Initial_plan:***
+- simple rails server
+- interface to accept commands
+- for easy access to read/write = use of a hashtable since it's 0(1) (best & average case depending on data and hashing algorithm)
+
+####Basic_usage####
+
+#####Starting the server:#####
+ruby commands.rb -p 5555
+
+#####Connect Client1:#####
+telnet localhost 5555
+
+#####Connect Client2:#####
+telnet localhost 5555
+GET /hi HTTP/1.1
+Host: localhost:5555
